@@ -10,4 +10,11 @@
 
 @interface MasterViewController : UITableViewController
 
+@property NSDictionary *data;
+@property NSArray *matches;
+@property NSMutableArray *pregameMatches;
+@property NSMutableArray *finalMatches;
+@property NSMutableArray *inprogressMatches;
+
+
 @end
