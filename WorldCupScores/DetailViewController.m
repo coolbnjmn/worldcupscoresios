@@ -45,22 +45,28 @@
         
         NSString *status = [self.detailItem objectForKey:@"status"];
         if([status isEqualToString:@"Final"]) {
+            self.view.backgroundColor = [UIColor colorWithRed:190.0f/255.0f green:201.0f/255.0f blue:187.0f/255.0f alpha:1.0];
             self.time.text = @"FT";
         } else if([status isEqualToString:@"Pre-game"]) {
+            self.view.backgroundColor = [UIColor colorWithRed:161.0f/255.0f green:207.0f/255.0f blue:236.0f/255.0f alpha:1.0];
             self.time.text = @"NT";
         } else {
-            self.time.text = [self.detailItem objectForKey:@"currentGameMinute"];
+            self.view.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:215.0f/255.0f blue:120.0f/255.0f alpha:1.0];
+            self.time.text = [NSString stringWithFormat:@"%@ '", [self.detailItem objectForKey:@"currentGameMinute"]];
         }
         
         self.homeGoalsAgainst.text = [NSString stringWithFormat:@"%@", [home objectForKey:@"goalsAgainst"]];
         self.homeGoalsFor.text = [NSString stringWithFormat:@"%@", [home objectForKey:@"goalsFor"]];
         self.homeGroup.text = [NSString stringWithFormat:@"%@", [home objectForKey:@"group"]];
         self.homeGroupRank.text = [NSString stringWithFormat:@"%@", [home objectForKey:@"groupRank"]];
+        self.homeMatchesPlayed.text = [NSString stringWithFormat:@"%@", [home objectForKey:@"matchesPlayed"]];
         
         self.awayGoalsAgainst.text = [NSString stringWithFormat:@"%@", [away objectForKey:@"goalsAgainst"]];
         self.awayGoalsFor.text = [NSString stringWithFormat:@"%@", [away objectForKey:@"goalsFor"]];
         self.awayGroup.text = [NSString stringWithFormat:@"%@", [away objectForKey:@"group"]];
         self.awayGroupRank.text = [NSString stringWithFormat:@"%@", [away objectForKey:@"groupRank"]];
+        self.awayMatchesPlayed.text = [NSString stringWithFormat:@"%@", [away objectForKey:@"matchesPlayed"]];
+
 
     }
 }

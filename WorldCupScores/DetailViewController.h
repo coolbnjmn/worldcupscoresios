@@ -23,9 +23,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *homeGoalsFor;
 @property (weak, nonatomic) IBOutlet UILabel *homeGroup;
 @property (weak, nonatomic) IBOutlet UILabel *homeGroupRank;
+@property (weak, nonatomic) IBOutlet UILabel *homeMatchesPlayed;
 
 @property (weak, nonatomic) IBOutlet UILabel *awayGoalsAgainst;
 @property (weak, nonatomic) IBOutlet UILabel *awayGoalsFor;
 @property (weak, nonatomic) IBOutlet UILabel *awayGroup;
 @property (weak, nonatomic) IBOutlet UILabel *awayGroupRank;
+@property (weak, nonatomic) IBOutlet UILabel *awayMatchesPlayed;
 @end
