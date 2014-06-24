@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2EF9CA1B-C417-4022-B3F0-B76FF9062DA1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WorldCupScores</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>05356C86-EAE3-415B-8953-5D2F2EE40ED2</key>
+		<string>ssh://github.com/coolbnjmn/worldcupscoresios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WorldCupScores.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>05356C86-EAE3-415B-8953-5D2F2EE40ED2</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/coolbnjmn/worldcupscoresios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>05356C86-EAE3-415B-8953-5D2F2EE40ED2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>05356C86-EAE3-415B-8953-5D2F2EE40ED2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>worldcupscoresios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

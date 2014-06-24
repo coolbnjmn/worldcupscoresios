@@ -226,7 +226,15 @@
     NSDictionary *awayTeam = [match objectForKey:@"awayTeamId"];
     NSLog(@"hometeam: %@", [homeTeam objectForKey:@"name"]);
     NSLog(@"awayteam: %@", [awayTeam objectForKey:@"name"]);
-
+//    NSString *homeTeamName, *awayTeamName;
+//    @try {
+//        homeTeamName = [homeTeam objectForKey:@"name"];
+//        awayTeamName = [awayTeam objectForKey:@"name"];
+//    } @catch (NSException *exception) {
+//        homeTeamName = @"";
+//        awayTeamName = @"";
+//    }
+    
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ : %@ %@",[awayTeam objectForKey:@"name"] , [match objectForKey:@"awayScore"], [match objectForKey:@"homeScore"], [homeTeam objectForKey:@"name"]];
 
     return cell;
