@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		771956E3195B8B070061A30F /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 771956E2195B8B070061A30F /* PlayerViewController.m */; };
 		772C675119549F520029CC10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 772C675019549F520029CC10 /* Foundation.framework */; };
 		772C675319549F520029CC10 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 772C675219549F520029CC10 /* CoreGraphics.framework */; };
 		772C675519549F520029CC10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 772C675419549F520029CC10 /* UIKit.framework */; };
@@ -22,7 +23,8 @@
 		772C677519549F520029CC10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 772C675419549F520029CC10 /* UIKit.framework */; };
 		772C677D19549F520029CC10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 772C677B19549F520029CC10 /* InfoPlist.strings */; };
 		772C677F19549F520029CC10 /* WorldCupScoresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 772C677E19549F520029CC10 /* WorldCupScoresTests.m */; };
-		B2F50FD619563DFF00AE6770 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2F50FD519563DFF00AE6770 /* Images-2.xcassets */; };
+		77CEC537195B7E2D00410ECB /* HomePlayersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CEC536195B7E2D00410ECB /* HomePlayersTVC.m */; };
+		77CEC53A195B7E4D00410ECB /* AwayPlayersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CEC539195B7E4D00410ECB /* AwayPlayersTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		771956E1195B8B070061A30F /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		771956E2195B8B070061A30F /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 		772C674D19549F520029CC10 /* WorldCupScores.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldCupScores.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		772C675019549F520029CC10 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		772C675219549F520029CC10 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,8 +61,11 @@
 		772C677A19549F520029CC10 /* WorldCupScoresTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WorldCupScoresTests-Info.plist"; sourceTree = "<group>"; };
 		772C677C19549F520029CC10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		772C677E19549F520029CC10 /* WorldCupScoresTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorldCupScoresTests.m; sourceTree = "<group>"; };
+		77CEC535195B7E2D00410ECB /* HomePlayersTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePlayersTVC.h; sourceTree = "<group>"; };
+		77CEC536195B7E2D00410ECB /* HomePlayersTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePlayersTVC.m; sourceTree = "<group>"; };
+		77CEC538195B7E4D00410ECB /* AwayPlayersTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwayPlayersTVC.h; sourceTree = "<group>"; };
+		77CEC539195B7E4D00410ECB /* AwayPlayersTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwayPlayersTVC.m; sourceTree = "<group>"; };
 		B2F50FD419563DF100AE6770 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		B2F50FD519563DFF00AE6770 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +133,13 @@
 				772C676619549F520029CC10 /* MasterViewController.m */,
 				772C676819549F520029CC10 /* DetailViewController.h */,
 				772C676919549F520029CC10 /* DetailViewController.m */,
+				77CEC535195B7E2D00410ECB /* HomePlayersTVC.h */,
+				77CEC536195B7E2D00410ECB /* HomePlayersTVC.m */,
+				77CEC538195B7E4D00410ECB /* AwayPlayersTVC.h */,
+				77CEC539195B7E4D00410ECB /* AwayPlayersTVC.m */,
+				771956E1195B8B070061A30F /* PlayerViewController.h */,
+				771956E2195B8B070061A30F /* PlayerViewController.m */,
 				772C676B19549F520029CC10 /* Images.xcassets */,
-				B2F50FD519563DFF00AE6770 /* Images-2.xcassets */,
 				772C675719549F520029CC10 /* Supporting Files */,
 			);
 			path = WorldCupScores;
@@ -243,7 +255,6 @@
 			files = (
 				772C676C19549F520029CC10 /* Images.xcassets in Resources */,
 				772C675B19549F520029CC10 /* InfoPlist.strings in Resources */,
-				B2F50FD619563DFF00AE6770 /* Images-2.xcassets in Resources */,
 				772C676419549F520029CC10 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,9 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771956E3195B8B070061A30F /* PlayerViewController.m in Sources */,
 				772C676119549F520029CC10 /* AppDelegate.m in Sources */,
 				772C676719549F520029CC10 /* MasterViewController.m in Sources */,
+				77CEC537195B7E2D00410ECB /* HomePlayersTVC.m in Sources */,
 				772C675D19549F520029CC10 /* main.m in Sources */,
+				77CEC53A195B7E4D00410ECB /* AwayPlayersTVC.m in Sources */,
 				772C676A19549F520029CC10 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "PlayerViewController.h"
 
 @interface DetailViewController ()
 - (void)configureView;
@@ -31,7 +32,7 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        NSLog(@"%@", self.detailItem);
+        
         NSDictionary *home = [self.detailItem objectForKey:@"homeTeamId"];
         NSDictionary *away = [self.detailItem objectForKey:@"awayTeamId"];
         self.homeTeamName.text = [home objectForKey:@"name"];
@@ -66,9 +67,11 @@
         self.awayGroup.text = [NSString stringWithFormat:@"%@", [away objectForKey:@"group"]];
         self.awayGroupRank.text = [NSString stringWithFormat:@"%@", [away objectForKey:@"groupRank"]];
         self.awayMatchesPlayed.text = [NSString stringWithFormat:@"%@", [away objectForKey:@"matchesPlayed"]];
-
-
+        
+        self.homePlayersTVC.data = [self.detailItem objectForKey:@"homeTeamPlayers"];
+        self.awayPlayersTVC.data = [self.detailItem objectForKey:@"awayTeamPlayers"];
     }
+    
 }
 
 - (void)viewDidLoad
@@ -82,6 +85,25 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"segue being called");
+    if ([[segue identifier] isEqualToString:@"showHomePlayer"]) {
+        NSIndexPath *indexPath = [self.homeTableView indexPathForSelectedRow];
+        NSDictionary *player = [self.homePlayersTVC.data objectAtIndex:indexPath.row];
+        
+        [[segue destinationViewController] setPlayer:player];
+    } else if ([[segue identifier] isEqualToString:@"showAwayPlayer"]) {
+        NSIndexPath *indexPath = [self.awayTableView indexPathForSelectedRow];
+        NSDictionary *player = [self.awayPlayersTVC.data objectAtIndex:indexPath.row];
+        
+        [[segue destinationViewController] setPlayer:player];
+    }
 }
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomePlayersTVC.h"
+#import "AwayPlayersTVC.h"
 
 @interface DetailViewController : UIViewController
 
@@ -30,4 +32,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *awayGroup;
 @property (weak, nonatomic) IBOutlet UILabel *awayGroupRank;
 @property (weak, nonatomic) IBOutlet UILabel *awayMatchesPlayed;
+
+@property (strong, nonatomic) IBOutlet AwayPlayersTVC *awayPlayersTVC;
+@property (strong, nonatomic) IBOutlet HomePlayersTVC *homePlayersTVC;
+@property (weak, nonatomic) IBOutlet UITableView *awayTableView;
+@property (weak, nonatomic) IBOutlet UITableView *homeTableView;
+
 @end

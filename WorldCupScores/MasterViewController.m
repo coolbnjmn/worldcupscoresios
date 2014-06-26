@@ -208,7 +208,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    cell.backgroundColor = [UIColor colorWithRed:0.94 green:0.84 blue:0.49 alpha:1.0];
+    cell.textLabel.textColor = [UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0];
     
 //    NSDictionary *match = [_matches objectAtIndex:indexPath.row];
     NSDictionary *match;
@@ -219,13 +220,9 @@
     } else {
         match = [_pregameMatches objectAtIndex:indexPath.row];
     }
-    NSLog(@"match: %@", match);
-
     
     NSDictionary *homeTeam = [match objectForKey:@"homeTeamId"];
     NSDictionary *awayTeam = [match objectForKey:@"awayTeamId"];
-    NSLog(@"hometeam: %@", [homeTeam objectForKey:@"name"]);
-    NSLog(@"awayteam: %@", [awayTeam objectForKey:@"name"]);
 //    NSString *homeTeamName, *awayTeamName;
 //    @try {
 //        homeTeamName = [homeTeam objectForKey:@"name"];
