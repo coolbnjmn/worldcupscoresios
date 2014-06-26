@@ -38,4 +38,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *awayTableView;
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 
+@property (weak, nonatomic) IBOutlet UILabel *startDate;
+
 @end

@@ -70,6 +70,23 @@
         
         self.homePlayersTVC.data = [self.detailItem objectForKey:@"homeTeamPlayers"];
         self.awayPlayersTVC.data = [self.detailItem objectForKey:@"awayTeamPlayers"];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        [formatter setLocale:enUSPOSIXLocale];
+        [formatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS'Z'"];
+        [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        NSString *startTimeFromObj = [self.detailItem objectForKey:@"startTime"];
+        NSLog(@"%@", startTimeFromObj);
+        
+        NSDate *start = [formatter dateFromString:startTimeFromObj];
+        NSLog(@"%@", start);
+        
+        NSString *dateString = [NSDateFormatter localizedStringFromDate:start
+                                                              dateStyle:NSDateFormatterMediumStyle
+                                                              timeStyle:NSDateFormatterShortStyle];
+        NSLog(@"dateString: %@", dateString);
+        self.startDate.text = dateString;
     }
     
 }
