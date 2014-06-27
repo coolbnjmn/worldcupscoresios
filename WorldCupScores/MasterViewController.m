@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://localhost:5000"]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://worldcupscores.herokuapp.com"]];
     
     // ASYNC CODE IF I WANT TO CHANGE TO ASYNC SOMETIME
 //    __block NSDictionary *json;
@@ -88,7 +88,7 @@
 
 }
 - (void)loadData {
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://localhost:5000"]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://worldcupscores.herokuapp.com"]];
     
     // ASYNC CODE IF I WANT TO CHANGE TO ASYNC SOMETIME
     //    __block NSDictionary *json;
