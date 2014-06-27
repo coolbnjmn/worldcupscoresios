@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *playerFoot;
 @property (weak, nonatomic) IBOutlet UILabel *playerFirstName;
 @property (weak, nonatomic) IBOutlet UILabel *playerLastName;
+@property (weak, nonatomic) IBOutlet UIImageView *clubLogo;
+@property (weak, nonatomic) IBOutlet UILabel *playerClub;
 
 
 @end

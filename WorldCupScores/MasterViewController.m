@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://worldcupscores.herokuapp.com"]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://localhost:5000"]];
     
     // ASYNC CODE IF I WANT TO CHANGE TO ASYNC SOMETIME
 //    __block NSDictionary *json;
@@ -88,7 +88,7 @@
 
 }
 - (void)loadData {
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://worldcupscores.herokuapp.com"]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://localhost:5000"]];
     
     // ASYNC CODE IF I WANT TO CHANGE TO ASYNC SOMETIME
     //    __block NSDictionary *json;
@@ -205,12 +205,56 @@
     }
     return sectionName;
 }
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *tempHeaderView=[[UIView alloc]initWithFrame:CGRectMake(0,0,320,22)];
+    
+    
+    // This changed:
+//    tempHeaderView.backgroundColor = [UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0];
+    // [UIColor colorWithRed:0.29 green:0.60 blue:0.05 alpha:1.0]
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = tempHeaderView.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0]CGColor], (id)[[UIColor colorWithRed:0.29 green:0.60 blue:0.05 alpha:1.0]CGColor], nil];
+    [tempHeaderView.layer insertSublayer:gradient atIndex:0];
+    
+    //Add label to view
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 22)];
+    NSString *sectionName;
+    switch (section)
+    {
+        case 0:
+            sectionName = @"Current Game(s)";
+            break;
+        case 1:
+            sectionName = @"Final Score(s)";
+            break;
+            // ...
+        default:
+            sectionName = @"Yet to Start";
+            break;
+    }
+    titleLabel.text = sectionName;
+    titleLabel.textColor = [UIColor colorWithRed:0.93 green:0.86 blue:0.61 alpha:1.0];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    [tempHeaderView addSubview:titleLabel];
+    return tempHeaderView;
+    // Use 'return [tempHeaderView autorelease];' in a non-ARC environment
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithRed:0.94 green:0.84 blue:0.49 alpha:1.0];
-    cell.textLabel.textColor = [UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0];
+//    cell.backgroundColor = [UIColor colorWithRed:0.94 green:0.84 blue:0.49 alpha:1.0];
     
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = cell.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0.94 green:0.84 blue:0.49 alpha:1.0]CGColor], (id)[[UIColor colorWithRed:0.93 green:0.86 blue:0.61 alpha:1.0]CGColor], nil];
+    [cell.layer insertSublayer:gradient atIndex:0];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0];
+
 //    NSDictionary *match = [_matches objectAtIndex:indexPath.row];
     NSDictionary *match;
     if(indexPath.section == 0) {

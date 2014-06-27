@@ -22,7 +22,28 @@
 
 - (void)configureView
 {
-    self.view.backgroundColor = [UIColor colorWithRed:190.0f/255.0f green:201.0f/255.0f blue:187.0f/255.0f alpha:1.0];
+//    self.view.backgroundColor = [UIColor colorWithRed:190.0f/255.0f green:201.0f/255.0f blue:187.0f/255.0f alpha:1.0];
+    // Create the colors
+    UIColor *lightOp =
+    [UIColor colorWithRed:0.26 green:0.47 blue:0.06 alpha:1.0];
+    UIColor *darkOp =
+    [UIColor colorWithRed:0.92 green:0.93 blue:0.42 alpha:1.0];
+    
+    // Create the gradient
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    
+    // Set colors
+    gradient.colors = [NSArray arrayWithObjects:
+                       (id)lightOp.CGColor,
+                       (id)darkOp.CGColor,
+                       nil];
+    
+    // Set bounds
+    gradient.frame = self.view.bounds;
+    
+    // Add the gradient to the view
+    [self.view.layer insertSublayer:gradient atIndex:0];
+    
     NSLog(@"in player view controller");
     NSLog(@"%@", _player);
     self.playerAge.text = [NSString stringWithFormat:@"%@", [_player objectForKey:@"age"]];
@@ -55,6 +76,16 @@
     
     self.playerFirstName.text = [_player objectForKey:@"firstName"];
     self.playerLastName.text = [_player objectForKey:@"lastName"];
+    
+    NSString *clubName = [[_player objectForKey:@"clubInfo"] objectForKey:@"name"];
+    if([clubName isEqualToString:@""]) {
+        self.playerClub.text = @"unknown";
+    } else {
+        self.playerClub.text = clubName;
+    }
+    
+    self.clubLogo.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[_player objectForKey:@"clubInfo"] objectForKey:@"logo"]]]];
+    
 }
 
 - (void)viewDidLoad

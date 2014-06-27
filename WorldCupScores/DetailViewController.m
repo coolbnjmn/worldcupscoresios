@@ -46,13 +46,72 @@
         
         NSString *status = [self.detailItem objectForKey:@"status"];
         if([status isEqualToString:@"Final"]) {
-            self.view.backgroundColor = [UIColor colorWithRed:190.0f/255.0f green:201.0f/255.0f blue:187.0f/255.0f alpha:1.0];
+//            self.view.backgroundColor = [UIColor colorWithRed:190.0f/255.0f green:201.0f/255.0f blue:187.0f/255.0f alpha:1.0];
+            // Create the colors
+            UIColor *lightOp =
+            [UIColor colorWithRed:0.26 green:0.47 blue:0.06 alpha:1.0];
+            UIColor *darkOp =
+            [UIColor colorWithRed:0.92 green:0.93 blue:0.42 alpha:1.0];
+            
+            // Create the gradient
+            CAGradientLayer *gradient = [CAGradientLayer layer];
+            
+            // Set colors
+            gradient.colors = [NSArray arrayWithObjects:
+                               (id)lightOp.CGColor,
+                               (id)darkOp.CGColor,
+                               nil];
+            
+            // Set bounds
+            gradient.frame = self.view.bounds;
+            
+            // Add the gradient to the view
+            [self.view.layer insertSublayer:gradient atIndex:0];
             self.time.text = @"FT";
         } else if([status isEqualToString:@"Pre-game"]) {
-            self.view.backgroundColor = [UIColor colorWithRed:161.0f/255.0f green:207.0f/255.0f blue:236.0f/255.0f alpha:1.0];
+//            self.view.backgroundColor = [UIColor colorWithRed:161.0f/255.0f green:207.0f/255.0f blue:236.0f/255.0f alpha:1.0];
+            
+            UIColor *lightOp =
+            [UIColor colorWithRed:0.33 green:0.94 blue:0.80 alpha:1.0];
+            UIColor *darkOp =
+            [UIColor colorWithRed:0.36 green:0.79 blue:1.00 alpha:1.0];
+            
+            // Create the gradient
+            CAGradientLayer *gradient = [CAGradientLayer layer];
+            
+            // Set colors
+            gradient.colors = [NSArray arrayWithObjects:
+                               (id)lightOp.CGColor,
+                               (id)darkOp.CGColor,
+                               nil];
+            
+            // Set bounds
+            gradient.frame = self.view.bounds;
+            
+            // Add the gradient to the view
+            [self.view.layer insertSublayer:gradient atIndex:0];
             self.time.text = @"NT";
         } else {
-            self.view.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:215.0f/255.0f blue:120.0f/255.0f alpha:1.0];
+//            self.view.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:215.0f/255.0f blue:120.0f/255.0f alpha:1.0];
+            UIColor *lightOp =
+            [UIColor colorWithRed:1.00 green:0.86 blue:0.30 alpha:1.0];
+            UIColor *darkOp =
+            [UIColor colorWithRed:1.00 green:0.80 blue:0.01 alpha:1.0];
+            
+            // Create the gradient
+            CAGradientLayer *gradient = [CAGradientLayer layer];
+            
+            // Set colors
+            gradient.colors = [NSArray arrayWithObjects:
+                               (id)lightOp.CGColor,
+                               (id)darkOp.CGColor,
+                               nil];
+            
+            // Set bounds
+            gradient.frame = self.view.bounds;
+            
+            // Add the gradient to the view
+            [self.view.layer insertSublayer:gradient atIndex:0];
             self.time.text = [NSString stringWithFormat:@"%@ '", [self.detailItem objectForKey:@"currentGameMinute"]];
         }
         
