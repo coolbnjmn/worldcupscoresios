@@ -35,52 +35,68 @@
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://worldcupscores.herokuapp.com"]];
     
     // ASYNC CODE IF I WANT TO CHANGE TO ASYNC SOMETIME
-//    __block NSDictionary *json;
-//    [NSURLConnection sendAsynchronousRequest:request
-//                                       queue:[NSOperationQueue mainQueue]
-//                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-//                               json = [NSJSONSerialization JSONObjectWithData:data
-//                                                                      options:0
-//                                                                        error:nil];
-//                               NSLog(@"Async JSON: %@", json);
-//                               _data = json;
-//                               
-//                               _matches = [_data objectForKey:@"body"];
-//                               NSLog(@"matches: %@", _matches);
-//
-//                           }];
-    NSData *theData = [NSURLConnection sendSynchronousRequest:request
-                                            returningResponse:nil
-                                                        error:nil];
-    
-    NSArray *newJSON = [NSJSONSerialization JSONObjectWithData:theData
-                                                            options:0
-                                                              error:nil];
-//    NSLog(@"newJSON is : %@", newJSON);
-    
-//    NSLog(@"matches: %@", _matches);
-    NSLog(@"match count: %d", _matches.count);
-    
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"startTime"  ascending:YES];
-    newJSON=[newJSON sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
-    
-    _matches = newJSON;
-    _finalMatches = [[NSMutableArray alloc] init];
-    _pregameMatches = [[NSMutableArray alloc] init];
-    _inprogressMatches = [[NSMutableArray alloc] init];
-    
-    for(int i = 0; i < _matches.count; i++) {
-        if ([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Final"]) {
-            [_finalMatches insertObject:[_matches objectAtIndex:i] atIndex:finalMatchesCount];
-            finalMatchesCount++;
-        } else if([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Pre-game"]) {
-            [_pregameMatches insertObject:[_matches objectAtIndex:i] atIndex:pregameMatchesCount];
-            pregameMatchesCount++;
-        } else {
-            [_inprogressMatches insertObject:[_matches objectAtIndex:i] atIndex:inprogressMatchesCount];
-            inprogressMatchesCount++;
-        }
-    }
+    __block NSArray *json;
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               json = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:0
+                                                                        error:nil];
+                               NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"startTime"  ascending:YES];
+                               json=[json sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+                               _matches = json;
+                               _finalMatches = [[NSMutableArray alloc] init];
+                               _pregameMatches = [[NSMutableArray alloc] init];
+                               _inprogressMatches = [[NSMutableArray alloc] init];
+                               
+                               for(int i = 0; i < _matches.count; i++) {
+                                   if ([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Final"]) {
+                                       [_finalMatches insertObject:[_matches objectAtIndex:i] atIndex:finalMatchesCount];
+                                       finalMatchesCount++;
+                                   } else if([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Pre-game"]) {
+                                       [_pregameMatches insertObject:[_matches objectAtIndex:i] atIndex:pregameMatchesCount];
+                                       pregameMatchesCount++;
+                                   } else {
+                                       [_inprogressMatches insertObject:[_matches objectAtIndex:i] atIndex:inprogressMatchesCount];
+                                       inprogressMatchesCount++;
+                                   }
+                               }
+                               
+                               
+                               [self.tableView reloadData];
+                           }];
+//    NSData *theData = [NSURLConnection sendSynchronousRequest:request
+//                                            returningResponse:nil
+//                                                        error:nil];
+//    
+//    NSArray *newJSON = [NSJSONSerialization JSONObjectWithData:theData
+//                                                            options:0
+//                                                              error:nil];
+////    NSLog(@"newJSON is : %@", newJSON);
+//    
+////    NSLog(@"matches: %@", _matches);
+//    NSLog(@"match count: %d", _matches.count);
+//    
+//    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"startTime"  ascending:YES];
+//    newJSON=[newJSON sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+//    
+//    _matches = newJSON;
+//    _finalMatches = [[NSMutableArray alloc] init];
+//    _pregameMatches = [[NSMutableArray alloc] init];
+//    _inprogressMatches = [[NSMutableArray alloc] init];
+//    
+//    for(int i = 0; i < _matches.count; i++) {
+//        if ([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Final"]) {
+//            [_finalMatches insertObject:[_matches objectAtIndex:i] atIndex:finalMatchesCount];
+//            finalMatchesCount++;
+//        } else if([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Pre-game"]) {
+//            [_pregameMatches insertObject:[_matches objectAtIndex:i] atIndex:pregameMatchesCount];
+//            pregameMatchesCount++;
+//        } else {
+//            [_inprogressMatches insertObject:[_matches objectAtIndex:i] atIndex:inprogressMatchesCount];
+//            inprogressMatchesCount++;
+//        }
+//    }
     _refreshControl = [[UIRefreshControl alloc]init];
     [self.tableView addSubview:_refreshControl];
     [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
@@ -91,58 +107,71 @@
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://worldcupscores.herokuapp.com"]];
     
     // ASYNC CODE IF I WANT TO CHANGE TO ASYNC SOMETIME
-    //    __block NSDictionary *json;
-    //    [NSURLConnection sendAsynchronousRequest:request
-    //                                       queue:[NSOperationQueue mainQueue]
-    //                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-    //                               json = [NSJSONSerialization JSONObjectWithData:data
-    //                                                                      options:0
-    //                                                                        error:nil];
-    //                               NSLog(@"Async JSON: %@", json);
-    //                               _data = json;
-    //
-    //                               _matches = [_data objectForKey:@"body"];
-    //                               NSLog(@"matches: %@", _matches);
-    //
-    //                           }];
-    NSData *theData = [NSURLConnection sendSynchronousRequest:request
-                                            returningResponse:nil
-                                                        error:nil];
-    
-    NSArray *newJSON = [NSJSONSerialization JSONObjectWithData:theData
-                                                       options:0
-                                                         error:nil];
-    //    NSLog(@"newJSON is : %@", newJSON);
-    
-    //    NSLog(@"matches: %@", _matches);
-    NSLog(@"match count: %d", _matches.count);
-    
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"startTime"  ascending:YES];
-    newJSON=[newJSON sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
-    
-    _matches = newJSON;
-    [_finalMatches removeAllObjects];
-    [_pregameMatches removeAllObjects];
-    [_inprogressMatches removeAllObjects];
-    finalMatchesCount = 0;
-    pregameMatchesCount = 0;
-    inprogressMatchesCount = 0;
-//    _finalMatches = [[NSMutableArray alloc] init];
-//    _pregameMatches = [[NSMutableArray alloc] init];
-//    _inprogressMatches = [[NSMutableArray alloc] init];
-    
-    for(int i = 0; i < _matches.count; i++) {
-        if ([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Final"]) {
-            [_finalMatches insertObject:[_matches objectAtIndex:i] atIndex:finalMatchesCount];
-            finalMatchesCount++;
-        } else if([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Pre-game"]) {
-            [_pregameMatches insertObject:[_matches objectAtIndex:i] atIndex:pregameMatchesCount];
-            pregameMatchesCount++;
-        } else {
-            [_inprogressMatches insertObject:[_matches objectAtIndex:i] atIndex:inprogressMatchesCount];
-            inprogressMatchesCount++;
-        }
-    }
+    __block NSArray *json;
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               json = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:0
+                                                                        error:nil];
+                               NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"startTime"  ascending:YES];
+                               json=[json sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+                               _matches = json;
+                               [_finalMatches removeAllObjects];
+                               [_inprogressMatches removeAllObjects];
+                               [_pregameMatches removeAllObjects];
+                               finalMatchesCount = 0;
+                               pregameMatchesCount = 0;
+                               inprogressMatchesCount = 0;
+
+                               for(int i = 0; i < _matches.count; i++) {
+                                   if ([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Final"]) {
+                                       [_finalMatches insertObject:[_matches objectAtIndex:i] atIndex:finalMatchesCount];
+                                       finalMatchesCount++;
+                                   } else if([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Pre-game"]) {
+                                       [_pregameMatches insertObject:[_matches objectAtIndex:i] atIndex:pregameMatchesCount];
+                                       pregameMatchesCount++;
+                                   } else {
+                                       [_inprogressMatches insertObject:[_matches objectAtIndex:i] atIndex:inprogressMatchesCount];
+                                       inprogressMatchesCount++;
+                                   }
+                               }
+                           }];
+//    NSData *theData = [NSURLConnection sendSynchronousRequest:request
+//                                            returningResponse:nil
+//                                                        error:nil];
+//    
+//    NSArray *newJSON = [NSJSONSerialization JSONObjectWithData:theData
+//                                                       options:0
+//                                                         error:nil];
+//    //    NSLog(@"newJSON is : %@", newJSON);
+//    
+//    //    NSLog(@"matches: %@", _matches);
+//    NSLog(@"match count: %d", _matches.count);
+//    
+//    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"startTime"  ascending:YES];
+//    newJSON=[newJSON sortedArrayUsingDescriptors:[NSArray arrayWithObjects:descriptor,nil]];
+//    
+//    _matches = newJSON;
+//    [_finalMatches removeAllObjects];
+//    [_pregameMatches removeAllObjects];
+//    [_inprogressMatches removeAllObjects];
+//    finalMatchesCount = 0;
+//    pregameMatchesCount = 0;
+//    inprogressMatchesCount = 0;
+//
+//    for(int i = 0; i < _matches.count; i++) {
+//        if ([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Final"]) {
+//            [_finalMatches insertObject:[_matches objectAtIndex:i] atIndex:finalMatchesCount];
+//            finalMatchesCount++;
+//        } else if([[[_matches objectAtIndex:i] objectForKey:@"status"] isEqualToString:@"Pre-game"]) {
+//            [_pregameMatches insertObject:[_matches objectAtIndex:i] atIndex:pregameMatchesCount];
+//            pregameMatchesCount++;
+//        } else {
+//            [_inprogressMatches insertObject:[_matches objectAtIndex:i] atIndex:inprogressMatchesCount];
+//            inprogressMatchesCount++;
+//        }
+//    }
 
 }
 - (void)refreshTable {
@@ -255,7 +284,6 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0];
 
-//    NSDictionary *match = [_matches objectAtIndex:indexPath.row];
     NSDictionary *match;
     if(indexPath.section == 0) {
         match = [_inprogressMatches objectAtIndex:indexPath.row];
