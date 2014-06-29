@@ -25,6 +25,7 @@
 		772C677F19549F520029CC10 /* WorldCupScoresTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 772C677E19549F520029CC10 /* WorldCupScoresTests.m */; };
 		77CEC537195B7E2D00410ECB /* HomePlayersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CEC536195B7E2D00410ECB /* HomePlayersTVC.m */; };
 		77CEC53A195B7E4D00410ECB /* AwayPlayersTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CEC539195B7E4D00410ECB /* AwayPlayersTVC.m */; };
+		B222655B1960890C0053B567 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = B222655A1960890C0053B567 /* GradientView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		77CEC536195B7E2D00410ECB /* HomePlayersTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePlayersTVC.m; sourceTree = "<group>"; };
 		77CEC538195B7E4D00410ECB /* AwayPlayersTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwayPlayersTVC.h; sourceTree = "<group>"; };
 		77CEC539195B7E4D00410ECB /* AwayPlayersTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwayPlayersTVC.m; sourceTree = "<group>"; };
+		B22265591960890C0053B567 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		B222655A1960890C0053B567 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 				77CEC536195B7E2D00410ECB /* HomePlayersTVC.m */,
 				77CEC538195B7E4D00410ECB /* AwayPlayersTVC.h */,
 				77CEC539195B7E4D00410ECB /* AwayPlayersTVC.m */,
+				B22265591960890C0053B567 /* GradientView.h */,
+				B222655A1960890C0053B567 /* GradientView.m */,
 				771956E1195B8B070061A30F /* PlayerViewController.h */,
 				771956E2195B8B070061A30F /* PlayerViewController.m */,
 				772C676B19549F520029CC10 /* Images.xcassets */,
@@ -274,6 +279,7 @@
 			files = (
 				771956E3195B8B070061A30F /* PlayerViewController.m in Sources */,
 				772C676119549F520029CC10 /* AppDelegate.m in Sources */,
+				B222655B1960890C0053B567 /* GradientView.m in Sources */,
 				772C676719549F520029CC10 /* MasterViewController.m in Sources */,
 				77CEC537195B7E2D00410ECB /* HomePlayersTVC.m in Sources */,
 				772C675D19549F520029CC10 /* main.m in Sources */,

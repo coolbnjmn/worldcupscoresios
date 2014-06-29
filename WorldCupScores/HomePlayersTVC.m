@@ -7,6 +7,7 @@
 //
 
 #import "HomePlayersTVC.h"
+#import "GradientView.h"
 
 @interface HomePlayersTVC ()
 
@@ -36,13 +37,28 @@
     // Configure the cell...
 //    cell.backgroundColor = [UIColor colorWithRed:0.94 green:0.84 blue:0.49 alpha:1.0];
 //    cell.textLabel.textColor = [UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0];
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = cell.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0.94 green:0.84 blue:0.49 alpha:1.0]CGColor], (id)[[UIColor colorWithRed:0.93 green:0.86 blue:0.61 alpha:1.0]CGColor], nil];
-    [cell.layer insertSublayer:gradient atIndex:0];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0];
-    
+//    CAGradientLayer *gradient = [CAGradientLayer layer];
+//    gradient.frame = cell.bounds;
+//    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0.94 green:0.84 blue:0.49 alpha:1.0]CGColor], (id)[[UIColor colorWithRed:0.93 green:0.86 blue:0.61 alpha:1.0]CGColor], nil];
+//    [cell.layer insertSublayer:gradient atIndex:0];
+//    cell.textLabel.backgroundColor = [UIColor clearColor];
+//    cell.textLabel.textColor = [UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0];
+    if (cell.backgroundView == nil) { // do one-time configurations
+        UIView* v = [UIView new];
+        v.backgroundColor = [UIColor blackColor];
+        UIView* v2 = [GradientView new];
+        CAGradientLayer* lay = (CAGradientLayer*)v2.layer;
+        lay.colors = @[(id)[UIColor colorWithRed:0.94 green:0.84 blue:0.49 alpha:1.0].CGColor,
+                       (id)([UIColor colorWithRed:0.93 green:0.86 blue:0.61 alpha:1.0].CGColor)];
+        [v addSubview:v2];
+        
+        v2.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+        UIViewAutoresizingFlexibleWidth;
+        cell.backgroundView = v;
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.25 green:0.51 blue:0.00 alpha:1.0];
+    }
     return cell;
 }
 
